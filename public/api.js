@@ -16,6 +16,7 @@ const API = {
   },
   async addExercise(data) {
     const id = location.search.split("=")[1];
+    console.log(data);
 
     const res = await fetch("/api/workouts/" + id, {
       method: "PUT",
@@ -27,22 +28,24 @@ const API = {
 
     return json;
   },
-  async createWorkout(data = {}) {
+  async createWorkout(data) {
+    console.log(data);
     const res = await fetch("/api/workouts", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" }
     });
-
+    
     const json = await res.json();
-
+    console.log(json);
     return json;
   },
 
   async getWorkoutsInRange() {
     const res = await fetch(`/api/workouts/range`);
+    console.log(res + " in API / getWorkoutsInRange");
     const json = await res.json();
-
+```
     return json;
   },
 };
